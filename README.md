@@ -10,6 +10,9 @@ npm				current 6.4.1	needed 5.1.1
 yeoman			current 2.0.5	needed ?
 with MEAN.js:
 npm install -g generator-meanjs
+with grunt:
+grunt-cli@1.3.1
+
 
 
 
