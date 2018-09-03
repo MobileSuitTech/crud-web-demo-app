@@ -1,0 +1,14 @@
+{
+  "name": "node-todo",
+  "version": "0.0.0",
+  "description": "Simple todo application to showcase CRUD and 2 Docker containers for the frontend and the database",
+  "main": "server.js",
+  "author": "Valentin Rieuf",
+  "dependencies": {
+    "express": "~4.13.2",
+    "mongoose": "~3.6.2",
+    "morgan": "~1.6.1",
+    "body-parser": "~1.14.1",
+    "method-override": "~2.3.5"
+  }
+}
