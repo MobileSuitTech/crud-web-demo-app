@@ -42,7 +42,7 @@ module.exports = function(app) {
 
     });
 
-    // delete a todo
+    // delete a todo and send back all the todos after deletion
     app.delete('/api/todos/:todo_id', function(req, res) {
         Todo.remove({
             _id : req.params.todo_id
