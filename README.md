@@ -1,14 +1,11 @@
 # crud-web-demo-app
-demo app that showcases aptitude in making an interactive web app with database, containerized
-
-so far only the front-end is done and we connected to version control Git with Github: 
+demo app that showcases an interactive web app with database, containerized with Docker with separate front-end and database containers
 
 DEPENDENCIES:
-node js			current 10.9.0  needed 8.9
-angular 		current 1.4.5   needed ?
-@angular/cli 	current	6.1.5	needed 6.1.5
-npm				current 6.4.1	needed 5.1.1
-yeoman			current 2.0.5	needed ?
+node js			current 10.9.0
+angular 		current 1.4.5
+npm				current 6.2.0
+
 with MEAN.js:
 npm install -g generator-meanjs
 with grunt:
@@ -27,8 +24,14 @@ sudo npm cache clean -f
 sudo npm install -g n
 sudo n latest
 
-after creating an angular project with angular-cli, 
-don't forget to do the audit to remove the vulnerabilities (it reminds you of it)
+yes so sudo npm audit fix --force
+is EXTREMELY IMPORTANT TO DO, UNLESS WE ALREADY COME UP WITH THE RIGHT PACKAGES?
+
+morgan@1.9.1
+body-parser@1.18.3 
+mongoose@5.2.14
+express@4.16.3  
+method-override@3.0.0
 
 to create an angular project:
 ng new "my-new-app"
