@@ -5,6 +5,7 @@ so far only the front-end is done and we connected to version control Git with G
 
 DEPENDENCIES:
 node js			current 10.9.0  needed 8.9
+angular 		current 1.4.5   needed ?
 @angular/cli 	current	6.1.5	needed 6.1.5
 npm				current 6.4.1	needed 5.1.1
 yeoman			current 2.0.5	needed ?
@@ -41,3 +42,17 @@ ng --prod serve
 
 start the server with:
 node server.js
+
+if we want to make it a daemon:
+sudo npm install -g forever
+then:
+forever start server.js
+
+tocheck the dir of forever:
+which forever
+to check the processes associated with the daemon:
+ps -ef|grep  node|grep -v grep
+
+to stop the daemon:
+forever stop server.js
+
