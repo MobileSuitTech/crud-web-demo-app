@@ -10,7 +10,7 @@ mkdir todo
 cd todo  
 <li>download this app's code:  </li>
 git clone https://github.com/MobileSuitTech/crud-web-demo-app.git  
-<li>naviguate to the main directory:  </li>
+<li>navigate to the main directory:  </li>
 cd crud-web-demo-app/ToDo/
 <li>run the app with:  </li>
 sh script.sh  
