@@ -1,10 +1,10 @@
 # crud-web-demo-app
 demo app that showcases an interactive web app with database, containerized with Docker with separate front-end and database containers
 
-to run the app just use:
-sh script.sh
-then point your browser to:
-http://172.17.0.3:8888/
+to run the app just use:  
+sh script.sh  
+then point your browser to:  
+http://172.17.0.3:8888/  
 
 
 
