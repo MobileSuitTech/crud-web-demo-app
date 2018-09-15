@@ -4,7 +4,13 @@ demo app that showcases an interactive web app with database, containerized with
 
 
 <ul>
-<li>to run the app just use:  </li>
+<li>make a new directory:  </li>
+mkdir todo  
+<li>go to it:  </li>
+cd todo  
+<li>download this app's code:  </li>
+git clone https://github.com/MobileSuitTech/crud-web-demo-app.git  
+<li>run the app with:  </li>
 sh script.sh  
 <li>then point your browser to:  </li>
 http://172.17.0.3:8888/  
