@@ -22,9 +22,7 @@ docker stop frontend-mean backend-mongo
 <li>for further cleanup:  </li>
 docker system prune  
 </ul>
-  
-
-
+<br /><br /><br />
 DEPENDENCIES:
 node js			current 10.9.0
 angular 		current 1.4.5
