@@ -9,7 +9,7 @@
     var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
     var database = require('./config/database');
     var port     = process.env.PORT || 8888;         // set the port
-
+    //var port     = process.env.PORT || 80;         // set the port
 
     // configuration ===============================================================
     mongoose.connect(database.url);     // connect to mongoDB database on modulus.io

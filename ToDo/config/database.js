@@ -1,5 +1,7 @@
 // config/database.js
 
 module.exports = {
-	url : 'mongodb://localhost/'
+	//this one below works for when not using containers
+	//url : 'mongodb://localhost/'
+	url : 'mongodb://172.17.0.2'
 };

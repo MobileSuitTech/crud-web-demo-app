@@ -1,15 +1,18 @@
 # crud-web-demo-app
 demo app that showcases an interactive web app with database, containerized with Docker with separate front-end and database containers
 
+to run the app just use:
+sh script.sh
+then point your browser to:
+http://172.17.0.3:8888/
+
+
+
 DEPENDENCIES:
 node js			current 10.9.0
 angular 		current 1.4.5
 npm				current 6.2.0
 
-with MEAN.js:
-npm install -g generator-meanjs
-with grunt:
-grunt-cli@1.3.1
 
 use this to install Mondodb: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
