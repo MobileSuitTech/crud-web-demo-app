@@ -16,6 +16,12 @@ cd crud-web-demo-app/ToDo/
 sh script.sh  
 <li>then point your browser to:  </li>
 http://172.17.0.3:8888/  
+  
+
+<li>to terminate the app:  </li>
+docker stop frontend-mean backend-mongo  
+<li>for further cleanup:  </li>
+docker system prune  
 </ul>
   
 
