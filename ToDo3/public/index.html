@@ -1,70 +1,111 @@
-<!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="bogoTodo">
-<head>
-    <!-- META -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+<html ng-app="TodoListApp">
+  <head>
 
-    <title>crud-web-demo-app-browser</title>
+    <link href="css/index.css" type="text/css" rel="Stylesheet" />
+    <title>Todo List Web App</title>
+  </head>
+  <body ng-controller="ListController">
 
-    <!-- SCROLLS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
-    <style>
-        html                    { overflow-y:scroll; }
-        body                    { padding-top:50px; }
-        #todo-list              { margin-bottom:30px; }
-    </style>
+    <div id = "page_wrapper"> 
+      <div id = "title_wrapper">
+        Todo List Web App
+      </div>
 
-    <!-- SCRIPTS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script> -->
-    <script src="js/core.js"></script> <!-- load our main application -->
-    <script src="js/controllers/main.js"></script> <!-- load our controller -->
-    <script src="js/services/todos.js"></script> <!-- load our todo service -->
+      <div id = "content_wrapper">
 
-
-</head>
-<!-- SET THE CONTROLLER AND GET ALL TODOS -->
-<body ng-controller="mainController">
-    <div class="container">
-
-        <!-- HEADER AND TODO COUNT -->
-        <div class="jumbotron text-center">
-            <h1>My Todo List <span class="label label-info">{{ todos.length }}</span></h1>
-        </div>
-
-        <!-- TODO LIST -->
-        <div id="todo-list" class="row">
-            <div class="col-sm-4 col-sm-offset-4">
-
-                <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                <div class="checkbox" ng-repeat="todo in todos">
-                    <label>
-                        <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
-                    </label>
+        <div id = "tools_block">
+          <table>
+            <tr>
+              <td>
+                <div id = "add_item_block">
+                  TASK:  <br/>
+                  <input type="text" ng-model="newItem.detail" maxlength="42" />
                 </div>
-
-            </div>
+              </td>
+              <td>
+                <div id = "add_item_block">
+                  DESCRIPTION:  <br/>
+                  <input type="text" ng-model="newItem.detail" maxlength="150" />
+                </div>
+              </td>
+              <td>
+                <div id = "add_item_block">
+                  DUE DATE:  <br/>
+                  <input type="date" ng-model="newItem.detail" maxlength="10" />
+                  <!-- <button ng-click="addItem()">Add Item</button> -->
+                </div>
+              </td>                
+            </tr>
+            <td>
+              <button ng-click="addItem()">Add Item</button>
+            </td>
+          </table>
         </div>
 
-        <!-- FORM TO CREATE TODOS -->
-        <div id="todo-form" class="row">
-            <div class="col-sm-8 col-sm-offset-2 text-center">
-                <form>
-                    <div class="form-group">
-
-                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                        <input type="text" class="form-control input-lg text-center" placeholder="Build a neural net" ng-model="formData.text">
-                    </div>
-
-                    <!-- createToDo() WILL CREATE NEW TODOS -->
-                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
-                </form>
-            </div>
+        <div id = "tabs_wrapper">
+          <table id = "tabs_block" >
+            <tr>
+              <th><div id = "all_item_tab" class = "tab" onclick = "changeTab(1)"> All things </div></th>
+              <th><div id = "active_item_tab" class = "tab" onclick = "changeTab(2)"> ToDo </div></th>
+              <th><div id = "complete_item_tab" class = "tab" onclick = "changeTab(3)"> Completed </div></th>
+            </tr>
+          </table>        
         </div>
 
+        <div id = "all_list_wrapper" class = "list_wrapper">
+          <div id = "all_list_block" class = "list_block">
+              <div class = "list_item">
+                <div class = "item_col detail_title"> Details </div>
+                <div class = "item_col stat_title"> Status </div>
+              </div>
+              <hr>
+              <div class = "list_item" ng-repeat="item in items | filter:detail ">
+                <div class = "item_col delete_col" ng-click="deleteItem(item)"></div>
+                <div class = "item_col detail_col"> {{ item.detail }} </div>
+                <div class = "item_col stat_col"> {{ item.stat }} </div>
+              </div>
+          </div>
+        </div>
+
+        <div id = "active_list_wrapper" class = "list_wrapper">
+          <div id = "active_list_block" class = "list_block">
+              <div class = "list_item">
+                <div class = "item_col detail_col"> Details </div>
+                <div class = "item_col stat_col"> Status </div>
+              </div>
+              <hr>
+              <div class = "list_item" ng-repeat="item in items | filter:{stat:'Active'} | filter:detail">
+                <div class = "item_col delete_col" ng-click="deleteItem(item)"></div>
+                <div class = "item_col detail_col"> {{ item.detail }} </div> 
+                <div class = "item_col stat_col"> {{ item.stat }} </div>
+                <div class = "item_col"> <button ng-click="completeItem(item)">Done!</button> </div>
+              </div>
+          </div>
+        </div>
+
+        <div id = "complete_list_wrapper" class = "list_wrapper">
+          <div id = "complete_list_block" class = "list_block">
+              <div class = "list_item">
+                <div class = "item_col detail_col"> Details </div>
+                <div class = "item_col stat_col"> Status </div>
+              </div>
+              <hr>
+              <div class = "list_item" ng-repeat="item in items | filter:{stat:'Complete'} | filter:detail">
+                <div class = "item_col delete_col" ng-click="deleteItem(item)"></div>
+                <div class = "item_col detail_col"> {{ item.detail }} </div> 
+                <div class = "item_col stat_col"> {{ item.stat }} </div>
+              </div>
+          </div>
+        </div>
+
+
+      </div>
     </div>
 
-</body>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+
+    <script src="js/ListController.js"></script>
+
+  </body>
+
 </html>

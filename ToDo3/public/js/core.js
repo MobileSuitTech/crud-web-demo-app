@@ -1,6 +1,6 @@
 // js/core.js
 
-angular.module('bogoTodo', ['todoController', 'todoService']);
+angular.module('TodoListApp', ['todoController', 'todoService']);
 
 
 

@@ -1,7 +1,33 @@
 what to do next for integration:
 how to integrate, what steps do we take next?
 >first look at both index.html files and see what we can put together
->then put the stuff from the simple todo app into the same folder as the ToDo files???
+DONE
+>then find out a way to make one item not being stored, but being fetched 
+from Mongodb
+>HOWOWOWOW????
+>first add 2 fields and make them just strings (we'll do date later)
+DONE
+>when doing Add Item now it must send it to the database
+>have open both controllers in my text editor and see how we can incorporate from the nice looking one to the ToDo one...
+...damn here we have a problem because both controllers are not the same 
+.. we may have to use the way that the ToDo app does in its controller ...but that means that we would have to change the angular version of the 
+...nice looking site maybe breaking it?...
+>let's try it by changing the angular script that we import in the .html
+>okay just found a bug where in the new app we can enter a new item 
+that has a blank value legally instead of it being illegal...
+>so maybe the solution is to use the code from nice app and incorporate 
+mongo access from older app into it, let's see if that works
+>does that mean we also need to start adding mongo now?
+maybe it's time to bring in the html from nice into ToDo? as well as the 
+controller?
+only way to find out is to do that very thing but see if it will still work because we are using a new angular in the nice one and an old one 
+in ToDo so the mongo access may not work, how to find out?
+just try it maybe
+but try whaht?
+maybe we can start by moving the new html into the old correct directory...
+>now put the controller!!!
+OKAY EVERYTHING WORKS PRETTY NICELY NOW, LET'S JUST MAKE MONGO WORK!!!!
+
 >the goal here being to MAKE THE MONGO DATA RETRIEVAL WORK....
->open Sublime on document-type view for both projects and have both index.html files opened at the same time to look at the differences
+
 
