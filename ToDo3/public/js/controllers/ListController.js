@@ -3,10 +3,14 @@ var todo_list = angular.module('TodoListApp', [])
   .controller('ListController', function($scope) 
   {
 
+    // $scope.items = [
+    //   { detail: 'Get up', stat: 'Complete'},
+    //   { detail: 'Wash face', stat: 'Active'},
+    //   { detail: 'Eat breakfast', stat: 'Active'}
+    // ];
     $scope.items = [
       { detail: 'Get up', stat: 'Complete'},
-      { detail: 'Wash face', stat: 'Active'},
-      { detail: 'Eat breakfast', stat: 'Active'}
+
     ];
 
     $scope.addItem = function () {

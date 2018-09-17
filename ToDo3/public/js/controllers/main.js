@@ -5,7 +5,6 @@ angular.module('todoController', [])
     .controller('mainController', function($scope, $http, Todos) {
         $scope.formData = {};
 
-
         // GET =====================================================================
         // when landing on the page, get all todos and show them
         // use the service to get all the todos
@@ -13,7 +12,6 @@ angular.module('todoController', [])
             .success(function(data) {
                 $scope.todos = data;
             });
-
 
         // CREATE ==================================================================
         // when submitting the add form, send the text to the node API
@@ -34,7 +32,6 @@ angular.module('todoController', [])
                     });
             }
         };
-
 
         // DELETE ==================================================================
         // delete a todo after checking it

@@ -61,7 +61,7 @@ body {
 }
 
 #tools_block td{
-    width:290px;
+    width:290px;/*290 original*/
 }
 
 #tabs_wrapper{
@@ -117,7 +117,7 @@ body {
 
 .tab{
     height:30px;
-    width:191px;
+    width:191px;/*here to change width of the tabs*/
     padding-top:5px;
 
     -moz-border-top-left-radius: 8px;  
