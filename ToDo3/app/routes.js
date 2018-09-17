@@ -7,7 +7,7 @@ var Todo = require('./models/todo');
 module.exports = function(app) {
 
     // api ---------------------------------------------------------------------
-    // get all todos
+    // get all the todos
     app.get('/api/todos', function(req, res) {
         // use mongoose to get all todos in the database
         Todo.find(function(err, todos) {
@@ -25,7 +25,11 @@ module.exports = function(app) {
         // create a todo, information comes from AJAX request from Angular
         Todo.create({
             text : req.body.text,
-            done : false
+            // desc : req.body.desc, ???
+            done : false,
+            //duedate : req.body.Date ???
+            //duedate : new(Date)
+            duedate : req.body.date
         }, function(err, todo) {
             if (err)
                 res.send(err);
