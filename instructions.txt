@@ -4,3 +4,4 @@ how to integrate, what steps do we take next?
 >then put the stuff from the simple todo app into the same folder as the ToDo files???
 >the goal here being to MAKE THE MONGO DATA RETRIEVAL WORK....
 >open Sublime on document-type view for both projects and have both index.html files opened at the same time to look at the differences
+
