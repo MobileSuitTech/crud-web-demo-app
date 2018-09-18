@@ -31,8 +31,7 @@ angular.module('todoController', [])
 
             // people can't just hold enter to keep adding the same to-do anymore
         if (!$.isEmptyObject($scope.formData)) {
-            console.log('something happened');
-            console.log('the date was: ' + $scope.formData.duedate);
+
             // call the create function from our service (returns a promise object)
             Todos.create($scope.formData)
             
@@ -42,7 +41,6 @@ angular.module('todoController', [])
                     $scope.todos = data; // assign our new list of todos
                 });
         }
-
       }
 
       $scope.deleteItem = function (id) {

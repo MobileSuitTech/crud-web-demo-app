@@ -91,9 +91,33 @@ we also found a reference to the model fields in the routes file too hahahahahha
 maybe the problem is that I REALLY NEED TO INITIALIZE A DATE BEFORE I TRY TO USE IT???? LET'S TRY TO DO THAT IN THE ABOVE FILE AND CALL .Date
 yeah okay before i continue any of this i really need to fix the $scope.items thing into $scope.formData instead....
 
->also what is formData and how do we use it????
-THAT'S JUST THE INPUT DATA FROM HTML...
-
+todo:
 >the goal here being to MAKE THE MONGO DATA RETRIEVAL WORK....
+DONE!!!!
+>$scope.formData in the controller, initialize it to zero...
+>html: bring in formData...
+>controller: populate the functions with the REST actions
+
+>>>make sure the date works
+so why can't we get the proper date it's ridiculous!!!
+could it be that it is not getting a value when it looks for it? because it is gone at that point? doubtful since the other fields are working...
+what else?
+>maybe my version of Angular is too old, man that would be sick if it was but it could break things maybe so I would have to fix that, although Angular is only responsible for stuff that happens in the browser with the html page so it wouldn't be so bad....
+NO THE VERSION OF ANGULAR IS ENOUGH FOR WHAT I WANT TO DO
+>before we go this route though we will see if we can make the date better, such as maybe store it as a number in milliseconds, but that would be okay in Javascript, but how in html?
+>>>how do we make a test case to test the sorting of the array?
+ok get the new angular from the example website, do it now...
+index.backup-latest2.html is the very latest save before we start breaking stuff
+
+
+>add the date field on html
+>add a field for status: Complete/Active line 64
+>also line 76 and others filters: {stat:'Active'}
+>add an update action to completeItem and make a route for it with UPDATE
+>always sort each column by date
+>add the description field on html
+
+
+
 
 
