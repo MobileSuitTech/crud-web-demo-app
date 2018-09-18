@@ -108,14 +108,34 @@ NO THE VERSION OF ANGULAR IS ENOUGH FOR WHAT I WANT TO DO
 >>>how do we make a test case to test the sorting of the array?
 ok get the new angular from the example website, do it now...
 index.backup-latest2.html is the very latest save before we start breaking stuff
+line 106 of index.html
+<div class = "list_item" ng-repeat="todo in todos | orderBy:'-text'">
+OMFGOMFG I GOT THE TEXT FILTER TO WORK!!!!!!!!
+
+there is something interesting that we just noticed, is that in the 3rd tab, the list is filtered but we are not sure due to which field it is filtered, so maybe let's find out ?? it's so fucking hard... or new? yeah new lol...
+>wow lol with new try it's actually broken completely at the 3rd tab....
 
 
+>always sort each column by date
 >add the date field on html
 >add a field for status: Complete/Active line 64
 >also line 76 and others filters: {stat:'Active'}
 >add an update action to completeItem and make a route for it with UPDATE
->always sort each column by date
 >add the description field on html
+>set the tags for CSS so that the 3rd column doesn't get a weird thing where it says status, it is biased towards the right for some reason
+
+
+what if i add a filter by done flag to the first? it should not reverse the order, will it?
+no it did not change, so this is exactly what we thought, but why?
+
+why does clicking on tab 2 change the ordering????
+but not on tab 3?
+
+okay we have also noticed that when we change tabs we see that the titles also change positions, which would indicate that maybe this could be a CSS problem?
+
+blocks or wrappers have problems, 2 and 3 are the same but different than the first one
+
+
 
 
 

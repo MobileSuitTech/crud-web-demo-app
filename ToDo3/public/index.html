@@ -72,7 +72,7 @@
                 <div class = "item_col stat_title"> Status </div>
               </div>
               <hr>
-              <div class = "list_item" ng-repeat="todo in todos | filter:text | orderBy:'date'">
+              <div class = "list_item" ng-repeat="todo in todos | orderBy:'duedate' | filter:{done:false}">
                 <div class = "item_col delete_col" ng-click="deleteItem(todo._id)"></div>
                 <div class = "item_col detail_col"> {{ todo.text }} </div>
                 <div class = "item_col stat_col"> {{ todo.done }} </div>
@@ -87,7 +87,7 @@
                 <div class = "item_col stat_col"> Status </div>
               </div>
               <hr>
-              <div class = "list_item" ng-repeat="todo in todos | filter:{done:false} | filter:text">
+              <div class = "list_item" ng-repeat="todo in todos | orderBy:'-duedate':{reverse:false} | filter:{done:false}">
                 <div class = "item_col delete_col" ng-click="deleteItem(todo)"></div>
                 <div class = "item_col detail_col"> {{ todo.text }} </div> 
                 <div class = "item_col stat_col"> {{ todo.done }} </div>
@@ -103,14 +103,13 @@
                 <div class = "item_col stat_col"> Status </div>
               </div>
               <hr>
-              <div class = "list_item" ng-repeat="todo in todos | filter:{done:true} | filter:text">
+              <div class = "list_item" ng-repeat="todo in todos | orderBy:'-duedate':{reverse:false} | filter:{done:false}">
                 <div class = "item_col delete_col" ng-click="deleteItem(todo)"></div>
                 <div class = "item_col detail_col"> {{ todo.text }} </div> 
                 <div class = "item_col stat_col"> {{ todo.done }} </div>
               </div>
           </div>
         </div>
-
 
       </div>
     </div>
