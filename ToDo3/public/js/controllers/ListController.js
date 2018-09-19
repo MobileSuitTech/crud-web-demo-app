@@ -4,12 +4,6 @@ angular.module('todoController', [])
     .controller('ListController', function($scope, $http, Todos) 
     {
       $scope.formData = {};
-
-      // $scope.items = [
-      //   { detail: 'Get up', stat: 'Complete'},
-      //   { detail: 'Wash face', stat: 'Active'},
-      //   { detail: 'Eat breakfast', stat: 'Active'}
-      // ];
       
       // GET =====================================================================
       // when landing on the page, get all todos and show them
@@ -20,16 +14,7 @@ angular.module('todoController', [])
           });
 
       $scope.addItem = function () {
-        // $scope.items.push(
-        //   {
-        //     detail: $scope.newItem.detail,
-        //     stat: 'Active'
-        //   });
-        //  $scope.newItem.detail = [];
-         
-         //Todos.create($scope.items[0]);
-
-            // people can't just hold enter to keep adding the same to-do anymore
+        // people can't just hold enter to keep adding the same to-do anymore
         if (!$.isEmptyObject($scope.formData)) {
             console.log('something happened');
             console.log('the date was: ' + $scope.formData.duedate);
@@ -42,25 +27,33 @@ angular.module('todoController', [])
                     $scope.todos = data; // assign our new list of todos
                 });
         }
-
       }
 
       $scope.deleteItem = function (id) {
-        // var index = $scope.items.indexOf(item);
-        // $scope.items.splice(index, 1);
-
-          Todos.delete(id)
-              // if successful creation, call our get function to get all the new todos
-              .success(function(data) {
-              $scope.todos = data; // assign our new list of todos
+        
+        Todos.delete(id)
+          // if successful creation, call our get function to get all the new todos
+          .success(function(data) {
+          $scope.todos = data; // assign our new list of todos
         });    
       }
 
       $scope.completeItem = function (id){
-        item.stat = 'Complete';
+        console.log("we're in completeItem now!!!");
+        //console.log($scope.todos._id.duedate);
+        Todos.patch(id)
+          .success(function(data){
+          $scope.todos = data;
+        })
       }
 
     });
+
+
+
+
+
+
 
     function changeTab(index)
     {

@@ -4,6 +4,20 @@
     <link href="css/index.css" type="text/css" rel="Stylesheet" />
     <title>Todo List Web App</title>
   </head>
+
+    <!-- load angular from local -->
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script> -->
+    <!-- load jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!-- load our main application -->
+    <script src="js/core.js"></script>     
+    <!-- load the controller -->
+    <script src="js/controllers/ListController.js"></script>
+    <!-- load our todo service -->
+    <script src="js/services/todos.js"></script>
+
   <body ng-controller="ListController">
 
     <div id = "page_wrapper"> 
@@ -19,19 +33,19 @@
               <td>
                 <div id = "add_item_block">
                   TASK:  <br/>
-                  <input type="text" ng-model="newItem.detail" maxlength="42" />
+                  <input type="text" ng-model="formData.text" maxlength="42" />
                 </div>
               </td>
               <td>
                 <div id = "add_item_block">
                   DESCRIPTION:  <br/>
-                  <input type="text" ng-model="newItem.description" maxlength="150" />
+                  <input type="text" ng-model="formData.desc" maxlength="150" />
                 </div>
               </td>
               <td>
                 <div id = "add_item_block">
                   DUE DATE:  <br/>
-                  <input type="date" ng-model="newItem.date" maxlength="10" />
+                  <input type="date" ng-model="formData.duedate" maxlength="50" />
                 </div>
               </td>                
             </tr>
@@ -54,14 +68,14 @@
         <div id = "all_list_wrapper" class = "list_wrapper">
           <div id = "all_list_block" class = "list_block">
               <div class = "list_item">
-                <div class = "item_col detail_title"> Details </div>
+                <div class = "item_col detail_title"> Task </div>
                 <div class = "item_col stat_title"> Status </div>
               </div>
               <hr>
-              <div class = "list_item" ng-repeat="item in items | filter:detail ">
-                <div class = "item_col delete_col" ng-click="deleteItem(item)"></div>
-                <div class = "item_col detail_col"> {{ item.detail }} </div>
-                <div class = "item_col stat_col"> {{ item.stat }} </div>
+              <div class = "list_item" ng-repeat="todo in todos | orderBy:'duedate'">
+                <div class = "item_col delete_col" ng-click="deleteItem(todo._id)"></div>
+                <div class = "item_col detail_col"> {{ todo.text }} </div>
+                <div class = "item_col stat_col"> {{ todo.done }} </div>
               </div>
           </div>
         </div>
@@ -69,15 +83,15 @@
         <div id = "active_list_wrapper" class = "list_wrapper">
           <div id = "active_list_block" class = "list_block">
               <div class = "list_item">
-                <div class = "item_col detail_col"> Details </div>
+                <div class = "item_col detail_col"> Task </div>
                 <div class = "item_col stat_col"> Status </div>
               </div>
               <hr>
-              <div class = "list_item" ng-repeat="item in items | filter:{stat:'Active'} | filter:detail">
-                <div class = "item_col delete_col" ng-click="deleteItem(item)"></div>
-                <div class = "item_col detail_col"> {{ item.detail }} </div> 
-                <div class = "item_col stat_col"> {{ item.stat }} </div>
-                <div class = "item_col"> <button ng-click="completeItem(item)">Done!</button> </div>
+              <div class = "list_item" ng-repeat="todo in todos | filter:{done: '!'+'Complete'} | orderBy:'-duedate':{reverse:false}">
+                <div class = "item_col delete_col" ng-click="deleteItem(todo)"></div>
+                <div class = "item_col detail_col"> {{ todo.text }} </div> 
+                <div class = "item_col stat_col"> {{ todo.done }} </div>
+                <div class = "item_col"> <button ng-click="completeItem(todo._id)">Done!</button> </div>
               </div>
           </div>
         </div>
@@ -85,34 +99,20 @@
         <div id = "complete_list_wrapper" class = "list_wrapper">
           <div id = "complete_list_block" class = "list_block">
               <div class = "list_item">
-                <div class = "item_col detail_col"> Details </div>
+                <div class = "item_col detail_col"> Task </div>
                 <div class = "item_col stat_col"> Status </div>
               </div>
               <hr>
-              <div class = "list_item" ng-repeat="item in items | filter:{stat:'Complete'} | filter:detail">
-                <div class = "item_col delete_col" ng-click="deleteItem(item)"></div>
-                <div class = "item_col detail_col"> {{ item.detail }} </div> 
-                <div class = "item_col stat_col"> {{ item.stat }} </div>
+              <div class = "list_item" ng-repeat="todo in todos | filter:{done: '!'+'Active'} | orderBy:'-duedate':{reverse:false}">
+                <div class = "item_col delete_col" ng-click="deleteItem(todo._id)"></div>
+                <div class = "item_col detail_col"> {{ todo.text }} </div> 
+                <div class = "item_col stat_col"> {{ todo.done }} </div>
               </div>
           </div>
         </div>
 
-
       </div>
     </div>
-
-    <!-- load angular -->
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <!-- load jquery -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-    <!-- load our main application -->
-    <script src="js/core.js"></script>     
-    <!-- load our controller -->
-    <script src="js/controllers/ListController.js"></script>
-    <!-- load our todo service -->
-    <script src="js/services/todos.js"></script> 
-
 
   </body>
 

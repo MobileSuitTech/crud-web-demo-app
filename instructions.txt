@@ -116,24 +116,37 @@ there is something interesting that we just noticed, is that in the 3rd tab, the
 >wow lol with new try it's actually broken completely at the 3rd tab....
 
 
->always sort each column by date
->add the date field on html
->add a field for status: Complete/Active line 64
->also line 76 and others filters: {stat:'Active'}
->add an update action to completeItem and make a route for it with UPDATE
->add the description field on html
->set the tags for CSS so that the 3rd column doesn't get a weird thing where it says status, it is biased towards the right for some reason
-
-
-what if i add a filter by done flag to the first? it should not reverse the order, will it?
-no it did not change, so this is exactly what we thought, but why?
-
 why does clicking on tab 2 change the ordering????
 but not on tab 3?
-
 okay we have also noticed that when we change tabs we see that the titles also change positions, which would indicate that maybe this could be a CSS problem?
+what if i add a filter by done flag to the first? it should not reverse the order, will it?
+no it did not change, so this is exactly what we thought, but why?
+>always sort each column by date
+>add an update action to completeItem and make a route for it with UPDATE
+IT IS DOOOOOOOOOONE!!!!!!
+I know!!!! instead of updating, we can create a new one like the old with an added True and then delete the other one!!!! ahahhaahahhahhahahha
+no that doesn't work we can only send an id....
+10 more minutes of intense searching and then I'll read what I had in the browser earlier about how to update a field
+>add a field for status: Complete/Active line 64
+>also line 76 and others filters: {stat:'Active'}
+i put in the script for the new version of angular and it broke everything
+now trying to put it in <head> instead and will see if that fixes it but probably not since the browser debug console was saying that it couldn't recognize a function, so nothing related to the html
+(instead of putting it right outside <body>)
+NOPE DOESN'T WORK
+OKAY GOT IT....
 
+>add the date field on html
+>make the "imminent" filter of dates....
+
+
+>set the tags for CSS so that the 3rd column doesn't get a weird thing where it says status, it is biased towards the right for some reason because 
 blocks or wrappers have problems, 2 and 3 are the same but different than the first one
+>add the description field on html
+>check the todo vs todo._id for delete in html for all three tabs...
+
+
+
+
 
 
 
