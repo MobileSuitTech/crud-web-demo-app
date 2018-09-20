@@ -1,14 +1,21 @@
+<!doctype html>
 <html ng-app="TodoListApp">
   <head>
 
     <link href="css/index.css" type="text/css" rel="Stylesheet" />
+
     <title>Todo List Web App</title>
+  
   </head>
 
-    <!-- load angular from local -->
+    <!-- load AngularJS v1.3.15 from local -->
     <script type="text/javascript" src="js/angular.min.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script> -->
-    <!-- load jquery -->
+
+  <!--  <script> src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"</script>
+ -->
+
+
+    <!-- load jquery from web -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
     <!-- load our main application -->
@@ -17,6 +24,9 @@
     <script src="js/controllers/ListController.js"></script>
     <!-- load our todo service -->
     <script src="js/services/todos.js"></script>
+
+
+
 
   <body ng-controller="ListController">
 
@@ -33,7 +43,7 @@
               <td>
                 <div id = "add_item_block">
                   TASK:  <br/>
-                  <input type="text" ng-model="formData.text" maxlength="42" />
+                  <input type="text" ng-model="formData.text" maxlength="50" />
                 </div>
               </td>
               <td>
@@ -55,6 +65,8 @@
           </table>
         </div>
 
+
+
         <div id = "tabs_wrapper">
           <table id = "tabs_block" >
             <tr>
@@ -65,16 +77,22 @@
           </table>        
         </div>
 
+
+
         <div id = "all_list_wrapper" class = "list_wrapper">
           <div id = "all_list_block" class = "list_block">
               <div class = "list_item">
                 <div class = "item_col detail_title"> Task </div>
+                <div class = "item_col detail_title"> Due Date </div>
                 <div class = "item_col stat_title"> Status </div>
               </div>
               <hr>
               <div class = "list_item" ng-repeat="todo in todos | orderBy:'duedate'">
+           <!--    <div class = "list_item" ng-repeat="todo in todos | myfilter: startDate: endDate"> -->
+                <!-- <div class = "list_item" ng-repeat="todo in todos | daterange: toda:tomor"> -->
                 <div class = "item_col delete_col" ng-click="deleteItem(todo._id)"></div>
                 <div class = "item_col detail_col"> {{ todo.text }} </div>
+                <div class = "item_col detail_col"> {{ todo.duedate | date: "MM-dd-yyyy" }} </div>
                 <div class = "item_col stat_col"> {{ todo.done }} </div>
               </div>
           </div>
@@ -84,12 +102,14 @@
           <div id = "active_list_block" class = "list_block">
               <div class = "list_item">
                 <div class = "item_col detail_col"> Task </div>
+                <div class = "item_col detail_title"> Due Date </div>
                 <div class = "item_col stat_col"> Status </div>
               </div>
               <hr>
               <div class = "list_item" ng-repeat="todo in todos | filter:{done: '!'+'Complete'} | orderBy:'-duedate':{reverse:false}">
                 <div class = "item_col delete_col" ng-click="deleteItem(todo)"></div>
-                <div class = "item_col detail_col"> {{ todo.text }} </div> 
+                <div class = "item_col detail_col"> {{ todo.text }} </div>
+                <div class = "item_col detail_col"> {{ todo.duedate | date: "MM-dd-yyyy" }} </div>
                 <div class = "item_col stat_col"> {{ todo.done }} </div>
                 <div class = "item_col"> <button ng-click="completeItem(todo._id)">Done!</button> </div>
               </div>
@@ -100,12 +120,14 @@
           <div id = "complete_list_block" class = "list_block">
               <div class = "list_item">
                 <div class = "item_col detail_col"> Task </div>
+                <div class = "item_col detail_title"> Due Date </div>
                 <div class = "item_col stat_col"> Status </div>
               </div>
               <hr>
               <div class = "list_item" ng-repeat="todo in todos | filter:{done: '!'+'Active'} | orderBy:'-duedate':{reverse:false}">
                 <div class = "item_col delete_col" ng-click="deleteItem(todo._id)"></div>
-                <div class = "item_col detail_col"> {{ todo.text }} </div> 
+                <div class = "item_col detail_col"> {{ todo.text }} </div>
+                <div class = "item_col detail_col"> {{ todo.duedate | date: "MM-dd-yyyy" }} </div>
                 <div class = "item_col stat_col"> {{ todo.done }} </div>
               </div>
           </div>

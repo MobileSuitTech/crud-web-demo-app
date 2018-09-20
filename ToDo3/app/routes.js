@@ -26,7 +26,8 @@ module.exports = function(app) {
             text : req.body.text,
             desc : req.body.desc,
             done : "Active",
-            duedate : req.body.duedate
+            duedate : req.body.duedate,
+            priority : req.body.priority
 
         }, function(err, todo) {
             if (err)

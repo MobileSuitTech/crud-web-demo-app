@@ -134,23 +134,65 @@ now trying to put it in <head> instead and will see if that fixes it but probabl
 (instead of putting it right outside <body>)
 NOPE DOESN'T WORK
 OKAY GOT IT....
-
 >add the date field on html
->make the "imminent" filter of dates....
+MM-DD-YYYY ??
+DONE !!!!!!
 
+now we have a date problem where we don't know if stuff is string or date format 
+and we don't know how to do input and output and even the comparaisons to be able to filter
 
+so maybe we need to do one thing to understand this more:
+be able to find out what the formats are for each input and output in the html context but also in the controller context (javascript)
+one thing that is pretty certain is that the database doesn't care about what format and we can store the dates in the database in whatever format that we need to as long as we know what to do to the date before we store it in there, but the formats have to be proper with the model definition, as well as maybe the input of the html? does it have to be? do we need the same format at the html input than at the model definition? 
+maybe use console.log(the_date) in order to be able to see what is happening at each step of experimentation
+what we have in $scope.formData.duedate probably just comes from the html so that is where we may need to do the formatting....
+The model must always be a Date object
+OKAY so getTime() seems to be a really useful function which value could be used in order to do the filtering in js, maybe, because it shows the microseconds
+>try the old css file in place of the new one for a laugh...
+
+the question if this fails is how to we access a javascript variable from the html, but more importantly, inside a date range, so maybe look up again the date range filter example that has a javascript snippet and do it like that...
+the alternative is to use a value that is inside the html but i dont know how that could be done
+
+read the current stack overflow article, but first, 
+see if we can output a date which corresponds to something 
+that is inside the controller from hetml
+
+in controller
+at the top of the code, create a date that is today
+var tod = new Date();
+
+var immindate = tod + 1 day
+or maybe we can convert the string to milliseconds, add 1 day's worth of milliseconds, 
+and then convert it back to a date object to get the date of tomorrow so that we can use it later
+then look up how to access a javascript variable at the controller from an html document because we want to be able to use it in one of the date filters
+>>>so we are able to filter for a date range but what about for anything after a date or anything before
+
+then tod can be used
+
+hack: maybe:
+add a field to the model, that says if overdue or imminent or none? call it priority?
+
+at the beginning of the controller get all todos, look at them and compare the duedate with today then fill priority to overdue, imminent or none, that way it refreshes all the priorities every time we refresh the page
+then filter for those fields in html
+also make the priority for each item that we create inside addItem
+we change the priority according to its due date
+
+>so first, inside the addItem function, log the duedate of the item
+and see what's up
+>>>yes the date is right, now write the code to see if we should change the priority field
+>then above in the controller at get.Todos, only at that point, let us check all of the items for duedate and update their duedates accordingly with a patch function, because that is when people refresh the page (probably will need to make a new patch function for this)
+>>look up how to compare dates in javascript....
+if we still encounter problems doing this then we will just keep only the month day and year in the dates from now on
+either by multiplaying or doing whatever else we need
+we're going to do a test where we pass toda's value to formdata.duedate and see in the database what it then becomes
+>>>that test works
+how do we store all the todos we just pulled? simple, it gets stored inside "data" 
+
+>add overdue and imminent sections
+>check each time we refresh that Todos.get is scanned for new priority levels...
 >set the tags for CSS so that the 3rd column doesn't get a weird thing where it says status, it is biased towards the right for some reason because 
 blocks or wrappers have problems, 2 and 3 are the same but different than the first one
 >add the description field on html
->check the todo vs todo._id for delete in html for all three tabs...
-
-
-
-
-
-
-
-
-
-
+>add api documentation....
+>remove the clutter console.log() in the controller code
 

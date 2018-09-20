@@ -1,30 +1,45 @@
 // js/controllers/ListController.js
 angular.module('todoController', [])
     
+    $scope.startDate = new Date(2015, 10, 10);
+    $scope.endDate = new Date(2015, 10, 31);
+    
+    .filter('dateRange', function() {
+      return function(input, startDate, endDate) {
+    
+        var retArray = [];
+    
+        angular.forEach(input, function(obj){
+          var duedateObj = obj.duedate;
+      
+          if(duedateObj >= startDate && duedateObj <= endDate) {
+            retArray.push(obj);     
+          }
+        }); 
+    
+        return retArray; 
+      };
+    });
+
     .controller('ListController', function($scope, $http, Todos) 
     {
       $scope.formData = {};
 
-      var yester = new Date();
-      var toda = new Date();
-      var tomor = new Date();
-      var dayaf = new Date();
+      var yester = new Date().getDate() - 1;
+      console.log("the date of yesterday is " + yester);
+      var toda = new Date().getDate();
+      var tomor = new Date().getDate() +1;
+
+      // $scope.yestDate = new Date();
+      // $scope.yestDate = yester;
+      // $scope.todDate = new Date().getDate();
+      // // $scope.todDate = toda;
+      // $scope.tomDate = new Date().getDate();
+      // $scope.tomDate = tomor;
+
+
+
       
-      toda.setHours(0,0,0,0);
-
-      yester.setDate(yester.getDate() - 1);
-      yester.setHours(0,0,0,0);
-
-      tomor.setDate(tomor.getDate() + 1);
-      tomor.setHours(0,0,0,0);
-
-      dayaf.setDate(dayaf.getDate() + 2);
-      dayaf.setHours(0,0,0,0);
-
-      console.log("day yesterday: " + yester);
-      console.log("day today: " + toda);
-      console.log("day tomorrow: " + tomor);
-
       // when landing on the page, get all todos and show them
       // use the service to get all the todos
       Todos.get()
@@ -35,28 +50,10 @@ angular.module('todoController', [])
       $scope.addItem = function () {
 
         if (!$.isEmptyObject($scope.formData)) {
-
-            // here put the date checking code
-            // scenarios:
-            $scope.formData.duedate.setHours(0,0,0,0);
-            console.log("time the user put, after setHours, is: ");
-            console.log($scope.formData.duedate);
-
-            if($scope.formData.duedate < toda){
-              // 1) the duedate is before today
-                $scope.formData.priority = "Overdue";
-                console.log("it's less");
-            } else {
-              // if(($scope.formData.duedate === toda) || ($scope.formData.duedate === tomor)){
-              if($scope.formData.duedate < dayaf){
-                //2) the duedate is today or tomorrow
-                $scope.formData.priority = "Imminent";
-              } else {
-                // 3) anything else
-                $scope.formData.priority = "Normal";
-              }
-            }
-           
+            console.log('something happened');
+            console.log('the date was: ' + $scope.formData.duedate);
+            console.log("now let's try to see what .getTime() shows us...");
+            console.log('the date was: ' + $scope.formData.duedate.getTime());
 
             // call the create function from our service (returns a promise object)
             Todos.create($scope.formData)
@@ -111,8 +108,4 @@ angular.module('todoController', [])
       break;
     default:;
     }
-
-
-
-
 }

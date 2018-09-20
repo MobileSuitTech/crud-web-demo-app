@@ -7,5 +7,6 @@ module.exports = mongoose.model('Todo', {
     text : String,
     desc : String,
     done : String,
-    duedate : Date
+    duedate : Date,
+    priority : String
 });

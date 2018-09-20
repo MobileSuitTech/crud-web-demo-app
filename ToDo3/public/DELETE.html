@@ -1,0 +1,76 @@
+<div class="row" ng-controller="EVerifyController as ECtrl">
+<div class="tab-pane" id="completed">
+<!--Completed TAB-->
+
+    <p></p>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text" class="form-control" placeholder="Employee Name" ng-model="search.name">
+        </div>
+        <p></p>
+        <div class="input-group">
+
+           <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-search"></i>
+                </div>
+                <input type="text" class="form-control" id="txtPreCurrentdate" data-provide="datepicker" placeholder="Enter a Start Date" ng-model="dateFrom" />
+                <span class="input-group-addon">-</span>
+                <input type="text" class="form-control" id="txtPostCurrentdate" data-provide="datepicker" placeholder="Enter an End Date"  ng-model="dateTo"/>
+
+                   <div class="input-group-addon">
+                       <i class="fa fa-server"></i>
+                   </div>
+                   <input type="number" id="txtResltsPerPage" class="form-control" ng-model="pageSize" placeholder="Results per Page 10">
+
+               </div>
+
+        </div>
+
+
+    </div>
+
+
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th ng-click="sortdata('name')"> Employee Name
+                <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>   
+            </th>
+            <th ng-click="sortdata('responseDate')">Response Date
+                <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
+            <th ng-click="sortdata('authStatus')">Authorized
+                <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
+            <th ng-click="sortdata('caseSatus')">Case Status
+                <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
+            <th ng-click="sortdata('phone')">Phone Number
+                <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+            </th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr dir-paginate="emp in EmployeeInfo | orderBy:sortType:sortReverse | filter:search.name  |  filter: dateRangeFilter('responseDate', dateFrom, dateTo) | itemsPerPage: 2">
+
+            <td>{{emp.name}}</td>
+            <td>{{emp.responseDate | dateFilter | date:"dd-MM-yyyy"}}</td>
+            <td>{{emp.authStatus}}</td>
+            <td>{{emp.caseSatus}}</td>
+            <td>{{emp.phone}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div ng-controller="OtherController" class="other-controller">                           
+    <div class="text-center">
+        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+    </div>
+</div>                           
+</div> 
