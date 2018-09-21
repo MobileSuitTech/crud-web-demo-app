@@ -67,35 +67,14 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- ALL NEW CHANGES TO BE DONE BELOW THIS LINE!!!!! -->
-
         <div id = "tabs_wrapper">
           <table id = "tabs_block" >
             <tr>
               <th><div id = "all_item_tab" class = "tab" onclick = "changeTab(1)"> All things </div></th>
               <th><div id = "active_item_tab" class = "tab" onclick = "changeTab(2)"> ToDo </div></th>
               <th><div id = "complete_item_tab" class = "tab" onclick = "changeTab(3)"> Completed </div></th>
-              <!-- ONLY THE NAME OF THIS AND ITS COLOR NEEDS BE CHANGED NOW: -->
-              <th><div id = "new_list_tab" class = "tab" onclick = "changeTab(4)"> Completed(change pls) </div></th>
+              <!-- changes to the new tab are here: -->
+              <th><div id = "complete_item_tab" class = "tab" onclick = "changeTab(4)"> Completed(change pls) </div></th>
             </tr>
           </table>        
         </div>
@@ -120,7 +99,7 @@
         </div>
 
         <!-- NEW TAB -->
-        <div id = "new_list_wrapper" class = "list_wrapper">
+        <div id = "all_list_wrapper" class = "list_wrapper">
           <div id = "all_list_block" class = "list_block">
               <div class = "list_item">
                 <div class = "item_col detail_title"> Task </div>
@@ -173,7 +152,7 @@
               </div>
           </div>
         </div>
-
+        
 
       </div>
     </div>

@@ -17,10 +17,10 @@ body {
     top:20px;
     margin-top:25px;
     background-color: rgb(2,180,253);
-    width:700px; /*was 600 originally*/
+    width:800px; /*was 600 originally then 700*/
     display: block;
     margin:auto;
-    min-height: 900px;
+    min-height: 900px; /* 900 this is not what changes the vertical size of the page!!! */
     padding-bottom: 10px;
 
     -moz-border-radius:20px;  
@@ -49,7 +49,7 @@ body {
 }
 
 #tools_block{
-    height:50px;
+    height:50px;/*50 this is the value that will fix "Add Item, but breaks the babs (probably due to the ng-repeat block being too high, not relative)*/
     padding:10px;
     margin:10px;
     background-color: rgb(155,228,253);
@@ -66,7 +66,7 @@ body {
 
 #tabs_wrapper{
     position: relative;
-    height: 30px;
+    height: 30px;/*30*/
 }
 
 #tabs_block{
@@ -78,7 +78,7 @@ body {
 
 #content_wrapper{
     position: relative;
-    height:820px;
+    height:820px;/* 820 */
     background-color: rgb(2,180,253);
 
     -moz-border-radius:20px;  
@@ -99,6 +99,11 @@ body {
     background-color: rgb(70,255,163);
 }
 
+#new_list_tab{
+    background-color: rgb(150,100,137);
+}
+
+
 #all_list_wrapper{
     background-color: rgb(155,228,253);
     display: block;
@@ -114,6 +119,10 @@ body {
     display: none;
 }
 
+#new_list_wrapper{
+    background-color: rgb(150,100,137);
+    display: none;
+}
 
 .tab{
     height:30px;
@@ -140,8 +149,8 @@ body {
 .list_wrapper{
     position: absolute;
     top:110px;
-    width:581px;
-    height:710px;
+    width:776px;
+    height:300px;/*710*/
     margin-left:10px;
     margin-right:10px;
 

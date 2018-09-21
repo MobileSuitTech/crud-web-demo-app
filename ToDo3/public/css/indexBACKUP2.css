@@ -1,6 +1,6 @@
 body {
-    background: url("../img/background.jpg") no-repeat;
-    background-size:2400px, 3200px;
+    /*background: url("../img/background.jpg") no-repeat;*/
+    /*background-size:2400px, 3200px;*/
 
     font-family: Helvetica, Arial, sans-serif;
 
@@ -17,7 +17,7 @@ body {
     top:20px;
     margin-top:25px;
     background-color: rgb(2,180,253);
-    width:600px;
+    width:700px; /*was 600 originally*/
     display: block;
     margin:auto;
     min-height: 900px;
@@ -61,7 +61,7 @@ body {
 }
 
 #tools_block td{
-    width:290px;
+    width:290px;/*290 original*/
 }
 
 #tabs_wrapper{
@@ -99,6 +99,10 @@ body {
     background-color: rgb(70,255,163);
 }
 
+#new_list_tab{
+    background-color: rgb(150,100,137);
+}
+
 #all_list_wrapper{
     background-color: rgb(155,228,253);
     display: block;
@@ -114,10 +118,14 @@ body {
     display: none;
 }
 
+#new_list_wrapper{
+    background-color: rgb(150,100,137);
+    display: none;
+}
 
 .tab{
     height:30px;
-    width:191px;
+    width:191px;/*here to change width of the tabs*/
     padding-top:5px;
 
     -moz-border-top-left-radius: 8px;  

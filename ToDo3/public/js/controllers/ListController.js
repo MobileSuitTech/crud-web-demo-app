@@ -21,9 +21,9 @@ angular.module('todoController', [])
       dayaf.setDate(dayaf.getDate() + 2);
       dayaf.setHours(0,0,0,0);
 
-      console.log("day yesterday: " + yester);
-      console.log("day today: " + toda);
-      console.log("day tomorrow: " + tomor);
+      // console.log("day yesterday: " + yester);
+      // console.log("day today: " + toda);
+      // console.log("day tomorrow: " + tomor);
 
       // when landing on the page, get all todos and show them
       // use the service to get all the todos
@@ -92,27 +92,35 @@ angular.module('todoController', [])
 
     function changeTab(index)
     {
+      console.log("changeTab");
     switch(index)
     {
     case 1:
       document.getElementById("all_list_wrapper").style.display = "block";
       document.getElementById("active_list_wrapper").style.display = "none";
       document.getElementById("complete_list_wrapper").style.display = "none";
+      document.getElementById("new_list_wrapper").style.display = "none";
       break;
     case 2:
       document.getElementById("all_list_wrapper").style.display = "none";
       document.getElementById("active_list_wrapper").style.display = "block";
       document.getElementById("complete_list_wrapper").style.display = "none";
+      document.getElementById("new_list_wrapper").style.display = "none";
       break;
     case 3:
       document.getElementById("all_list_wrapper").style.display = "none";
       document.getElementById("active_list_wrapper").style.display = "none";
       document.getElementById("complete_list_wrapper").style.display = "block";
+      document.getElementById("new_list_wrapper").style.display = "none";
+      break;
+    case 4:   
+      document.getElementById("all_list_wrapper").style.display = "none";
+      document.getElementById("active_list_wrapper").style.display = "none";
+      document.getElementById("complete_list_wrapper").style.display = "none";
+      document.getElementById("new_list_wrapper").style.display = "block";
+      
+      //make the css changes here still so that we actually see a new tab...
       break;
     default:;
     }
-
-
-
-
 }

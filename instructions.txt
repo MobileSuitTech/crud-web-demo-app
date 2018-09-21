@@ -188,11 +188,51 @@ we're going to do a test where we pass toda's value to formdata.duedate and see 
 >>>that test works
 how do we store all the todos we just pulled? simple, it gets stored inside "data" 
 
->add overdue and imminent sections
->check each time we refresh that Todos.get is scanned for new priority levels...
 >set the tags for CSS so that the 3rd column doesn't get a weird thing where it says status, it is biased towards the right for some reason because 
 blocks or wrappers have problems, 2 and 3 are the same but different than the first one
 >add the description field on html
 >add api documentation....
->remove the clutter console.log() in the controller code
+
+>add overdue and imminent sections
+>do a filter test for the first column for overdue....
+YES IT WORKS WITH: 
+| filter:{priority: 'Overdue'}
+now add a tab without it looking like shit...
+LIST of things that need to be changed in the html:
+
+-add a changeTab div in the table before the ng-repeats
+DONE
+-add an ng-repeat block for the new block
+-in the controller add an item to the changeTab function definition
+-do the CSS so everything looks smooth again...
+(maybe do that one first with an extra tab done only in css and with the changeTab div added....)
+>>>increase the size of the table that contains data
+where is it? let's find it in the html?
+
+>>>now before we resize the tab table, we add tags for it in css and then put them in html
+
+TODO:
+CHANGE THE COLOR OF TAB BACKGROUND LINE 98
+
+
+>check each time we refresh that Todos.get is scanned for new priority levels...
+
+
+
+get the tools color/wrapper
+it is: 155,228,253
+see where that color is the same in one of the three tabs, that's our tag
+okay so all the colors seem alright here for the new list wrapper
+
+but it still doesn't show though.... why?
+is it because we didn't put the wrapper tab for that certain block?
+or is it because in the controller we did not make it look like "block"? also we need to make in the css a new block for the new tab
+
+> change the thing in the controller
+DONE!!!! IT WORKS NOW , NIIIIIICE!!!!!!
+> change the tags in html
+> create new block wrapper in css
+DONE I THINK?
+
+
 
