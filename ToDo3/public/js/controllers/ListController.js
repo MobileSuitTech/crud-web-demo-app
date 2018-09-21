@@ -21,9 +21,7 @@ angular.module('todoController', [])
       dayaf.setDate(dayaf.getDate() + 2);
       dayaf.setHours(0,0,0,0);
 
-      // console.log("day yesterday: " + yester);
-      // console.log("day today: " + toda);
-      // console.log("day tomorrow: " + tomor);
+
 
       // when landing on the page, get all todos and show them
       // use the service to get all the todos
@@ -32,35 +30,29 @@ angular.module('todoController', [])
               $scope.todos = data;
           });
 
+
       $scope.addItem = function () {
 
         if (!$.isEmptyObject($scope.formData)) {
 
-            // here put the date checking code
-            // scenarios:
             $scope.formData.duedate.setHours(0,0,0,0);
-            console.log("time the user put, after setHours, is: ");
-            console.log($scope.formData.duedate);
-
+            // set the priority field of the task
             if($scope.formData.duedate < toda){
-              // 1) the duedate is before today
+              // duedate is before today
                 $scope.formData.priority = "Overdue";
-                console.log("it's less");
             } else {
-              // if(($scope.formData.duedate === toda) || ($scope.formData.duedate === tomor)){
               if($scope.formData.duedate < dayaf){
-                //2) the duedate is today or tomorrow
+              // duedate is today or tomorrow
                 $scope.formData.priority = "Imminent";
               } else {
-                // 3) anything else
+                // anything else
                 $scope.formData.priority = "Normal";
               }
             }
            
 
             // call the create function from our service (returns a promise object)
-            Todos.create($scope.formData)
-            
+            Todos.create($scope.formData)           
                 // if successful creation, call our get function to get all the new todos
                 .success(function(data) {
                     $scope.formData = {}; // clear the form fields so our user is ready to enter another
@@ -80,12 +72,67 @@ angular.module('todoController', [])
 
       $scope.completeItem = function (id){
         console.log("we're in completeItem now!!!");
-        //console.log($scope.todos._id.duedate);
         Todos.patch(id)
           .success(function(data){
           $scope.todos = data;
-        })
+        });
       }
+
+
+    $scope.runDemo = function (){
+
+      var lsweek = new Date();
+      lsweek.setDate(lsweek.getDate() - 7);
+      lsweek.setHours(0,0,0,0);
+      var nxweek = new Date();
+      nxweek.setDate(nxweek.getDate() + 7);
+      nxweek.setHours(0,0,0,0);
+
+      $scope.formData.text = "some old overdue task";
+      $scope.formData.desc = "dummy description";
+      $scope.formData.duedate = lsweek;
+      $scope.formData.priority = "Overdue";
+      $scope.addItem();
+      $scope.formData = {};
+
+      $scope.formData.text = "a late task";
+      $scope.formData.desc = "dummy description";
+      $scope.formData.duedate = yester;
+      $scope.formData.priority = "Overdue";
+      $scope.addItem();
+      $scope.formData = {};
+
+      $scope.formData.text = "today's task";
+      $scope.formData.desc = "dummy description";
+      $scope.formData.duedate = toda;
+      $scope.formData.priority = "Imminent";
+      $scope.addItem();
+      $scope.formData = {};
+
+      $scope.formData.text = "a task for tomorrow";
+      $scope.formData.desc = "dummy description";
+      $scope.formData.duedate = tomor;
+      $scope.formData.priority = "Imminent";
+      $scope.addItem();
+      $scope.formData = {};
+
+      $scope.formData.text = "some task in 2 days";
+      $scope.formData.desc = "dummy description";
+      $scope.formData.duedate = dayaf;
+      $scope.formData.priority = "Normal";
+      $scope.addItem();
+      $scope.formData = {};
+
+      $scope.formData.text = "a task due next week";
+      $scope.formData.desc = "dummy description";
+      $scope.formData.duedate = nxweek;
+      $scope.formData.priority = "Normal";
+      $scope.addItem();
+      $scope.formData = {};
+
+      console.log("clicked");
+    }
+
 
     });
 
@@ -118,9 +165,8 @@ angular.module('todoController', [])
       document.getElementById("active_list_wrapper").style.display = "none";
       document.getElementById("complete_list_wrapper").style.display = "none";
       document.getElementById("new_list_wrapper").style.display = "block";
-      
-      //make the css changes here still so that we actually see a new tab...
       break;
     default:;
     }
+
 }

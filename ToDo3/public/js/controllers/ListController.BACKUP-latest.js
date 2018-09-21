@@ -118,8 +118,6 @@ angular.module('todoController', [])
       document.getElementById("active_list_wrapper").style.display = "none";
       document.getElementById("complete_list_wrapper").style.display = "none";
       document.getElementById("new_list_wrapper").style.display = "block";
-      
-      //make the css changes here still so that we actually see a new tab...
       break;
     default:;
     }

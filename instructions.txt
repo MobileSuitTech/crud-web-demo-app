@@ -231,8 +231,20 @@ or is it because in the controller we did not make it look like "block"? also we
 > change the thing in the controller
 DONE!!!! IT WORKS NOW , NIIIIIICE!!!!!!
 > change the tags in html
+DONE
 > create new block wrapper in css
 DONE I THINK?
+seems like everything is working alright now...
+just fix the task, due date and status layouts and then
+look at the Todos.get function and make it update the stuff that changed days
+order of filters:
+Overdue 		Imminent 		Completed
+so we're gonna remove all things? or not?
+what does the assignment say??
+figure out what to do with the ToDo clicks if we need to move them
+save all four filters
+DONE!!!!!
 
+for a nice test we could maybe run the app and then push by code an item onto the todos array and print its value in the console, then call the addItem function on it and see if we can see it in the database and what it has in it....
 
-
+we saw a bug with a missing ; at Todos.patch(id) ....

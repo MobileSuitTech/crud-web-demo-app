@@ -61,44 +61,26 @@
             </tr>
             <td>
               <button ng-click="addItem()">Add Item</button>
-            </td>
+              <button ng-click="runDemo()">Run Demo</button>
+            </td>           
           </table>
         </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- ALL NEW CHANGES TO BE DONE BELOW THIS LINE!!!!! -->
-
         <div id = "tabs_wrapper">
           <table id = "tabs_block" >
             <tr>
-              <th><div id = "all_item_tab" class = "tab" onclick = "changeTab(1)"> All things </div></th>
-              <th><div id = "active_item_tab" class = "tab" onclick = "changeTab(2)"> ToDo </div></th>
-              <th><div id = "complete_item_tab" class = "tab" onclick = "changeTab(3)"> Completed </div></th>
-              <!-- ONLY THE NAME OF THIS AND ITS COLOR NEEDS BE CHANGED NOW: -->
-              <th><div id = "new_list_tab" class = "tab" onclick = "changeTab(4)"> Completed(change pls) </div></th>
+              <th><div id = "all_item_tab" class = "tab" onclick = "changeTab(1)"> All tasks </div></th>
+              <th><div id = "active_item_tab" class = "tab" onclick = "changeTab(2)"> Overdue </div></th>
+              <th><div id = "complete_item_tab" class = "tab" onclick = "changeTab(3)"> Imminent </div></th>
+              <th><div id = "new_list_tab" class = "tab" onclick = "changeTab(4)"> Completed </div></th>
             </tr>
           </table>        
         </div>
+
+
+
 
 
         <!-- ALL THINGS -->
@@ -110,34 +92,17 @@
                 <div class = "item_col stat_title"> Status </div>
               </div>
               <hr>
-              <div class = "list_item" ng-repeat="todo in todos | filter:{priority: 'Overdue'} | orderBy:'duedate'">
+              <div class = "list_item" ng-repeat="todo in todos | filter:{done: '!'+'Complete'} | orderBy:'duedate'">
                 <div class = "item_col delete_col" ng-click="deleteItem(todo._id)"></div>
                 <div class = "item_col detail_col"> {{ todo.text }} </div>
                 <div class = "item_col detail_col"> {{ todo.duedate | date: "MM-dd-yyyy" }} </div>
                 <div class = "item_col stat_col"> {{ todo.done }} </div>
+                <div class = "item_col"> <button ng-click="completeItem(todo._id)">Done!</button> </div>               
               </div>
           </div>
         </div>
 
-        <!-- NEW TAB -->
-        <div id = "new_list_wrapper" class = "list_wrapper">
-          <div id = "all_list_block" class = "list_block">
-              <div class = "list_item">
-                <div class = "item_col detail_title"> Task </div>
-                <div class = "item_col detail_title"> Due Date </div>
-                <div class = "item_col stat_title"> Status </div>
-              </div>
-              <hr>
-              <div class = "list_item" ng-repeat="todo in todos | filter:{priority: 'Overdue'} | orderBy:'duedate'">
-                <div class = "item_col delete_col" ng-click="deleteItem(todo._id)"></div>
-                <div class = "item_col detail_col"> {{ todo.text }} </div>
-                <div class = "item_col detail_col"> {{ todo.duedate | date: "MM-dd-yyyy" }} </div>
-                <div class = "item_col stat_col"> {{ todo.done }} </div>
-              </div>
-          </div>
-        </div>
-
-        <!-- ToDo -->
+        <!-- OVERDUE -->
         <div id = "active_list_wrapper" class = "list_wrapper">
           <div id = "active_list_block" class = "list_block">
               <div class = "list_item">
@@ -146,7 +111,7 @@
                 <div class = "item_col stat_col"> Status </div>
               </div>
               <hr>
-              <div class = "list_item" ng-repeat="todo in todos | filter:{done: '!'+'Complete'} | orderBy:'-duedate':{reverse:false}">
+              <div class = "list_item" ng-repeat="todo in todos | filter:{priority: 'Overdue'} | filter:{done: '!'+'Complete'} | orderBy:'duedate'">
                 <div class = "item_col delete_col" ng-click="deleteItem(todo)"></div>
                 <div class = "item_col detail_col"> {{ todo.text }} </div>
                 <div class = "item_col detail_col"> {{ todo.duedate | date: "MM-dd-yyyy" }} </div>
@@ -156,7 +121,7 @@
           </div>
         </div>
 
-        <!-- COMPLETED -->
+        <!-- IMMINENT -->
         <div id = "complete_list_wrapper" class = "list_wrapper">
           <div id = "complete_list_block" class = "list_block">
               <div class = "list_item">
@@ -165,7 +130,26 @@
                 <div class = "item_col stat_col"> Status </div>
               </div>
               <hr>
-              <div class = "list_item" ng-repeat="todo in todos | filter:{done: '!'+'Active'} | orderBy:'-duedate':{reverse:false}">
+              <div class = "list_item" ng-repeat="todo in todos | filter:{priority: 'Imminent'} | filter:{done: '!'+'Complete'} | orderBy:'-duedate':{reverse:false}">
+                <div class = "item_col delete_col" ng-click="deleteItem(todo._id)"></div>
+                <div class = "item_col detail_col"> {{ todo.text }} </div>
+                <div class = "item_col detail_col"> {{ todo.duedate | date: "MM-dd-yyyy" }} </div>
+                <div class = "item_col stat_col"> {{ todo.done }} </div>
+                <div class = "item_col"> <button ng-click="completeItem(todo._id)">Done!</button> </div>                
+              </div>
+          </div>
+        </div>
+
+        <!-- COMPLETED -->
+        <div id = "new_list_wrapper" class = "list_wrapper">
+          <div id = "all_list_block" class = "list_block">
+              <div class = "list_item">
+                <div class = "item_col detail_title"> Task </div>
+                <div class = "item_col detail_title"> Due Date </div>
+                <div class = "item_col stat_title"> Status </div>
+              </div>
+              <hr>
+              <div class = "list_item" ng-repeat="todo in todos | filter:{done: 'Complete'} | orderBy:'-duedate':{reverse:false}">
                 <div class = "item_col delete_col" ng-click="deleteItem(todo._id)"></div>
                 <div class = "item_col detail_col"> {{ todo.text }} </div>
                 <div class = "item_col detail_col"> {{ todo.duedate | date: "MM-dd-yyyy" }} </div>
@@ -173,6 +157,8 @@
               </div>
           </div>
         </div>
+
+
 
 
       </div>

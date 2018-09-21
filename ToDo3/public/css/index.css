@@ -106,7 +106,7 @@ body {
 
 #all_list_wrapper{
     background-color: rgb(155,228,253);
-    display: block;
+    display: none;
 }
 
 #active_list_wrapper{
@@ -116,7 +116,7 @@ body {
 
 #complete_list_wrapper{
     background-color: rgb(70,255,163);
-    display: none;
+    display: block;
 }
 
 #new_list_wrapper{
