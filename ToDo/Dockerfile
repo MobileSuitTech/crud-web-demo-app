@@ -1,4 +1,4 @@
-# Tells the Docker which base image to start.
+# Tells Docker which base image to start with
 FROM node
 
 # Adds files from the host file system into the Docker container.
@@ -7,16 +7,12 @@ ADD . /app
 # Sets the current working directory for subsequent instructions
 WORKDIR /app
 
-RUN npm install
-RUN npm install -g nodemon
-#RUN npm install -g bower
-#RUN bower install --allow-root
-#RUN npm install -g nodemon
+#npm install is optional here, with it the node_modules would
+#have to be downloaded which can be bad if scaling the container
+#RUN npm install
 
 #expose a port to allow external access
 EXPOSE 3000
 
-# Start mean application
-#CMD ["nodemon", "server.js"]
-#CMD ["node", "server.js"]
+# start the application
 CMD ["npm", "start"]
